@@ -352,7 +352,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = 'd4fdc807333c42f995eb47cc9541c9a49f5e77721ca13801fbd38c32ce866e50';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -365,7 +365,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/source/images/xxx.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/blog/title.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -430,7 +430,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    99
+                    285
                 </div>
                 
 
@@ -447,9 +447,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h1><p>非常感谢这篇文章：GitHub + Hexo 从零开始搭建个人博客 ，参考的这篇文章。<br>来源: Moonのblog<br>文章作者: Moon<br>文章链接: <a target="_blank" rel="noopener" href="https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/">https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/</a><br>本文章著作权归作者所有，任何形式的转载都请注明出处。</p>
+                <h1 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h1><p>非常感谢这篇文章：<a target="_blank" rel="noopener" href="https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/#1-%E5%89%8D%E8%A8%80">GitHub + Hexo</a> 从零开始搭建个人博客 ，参考的这篇文章。<br>来源: Moonのblog<br>文章作者: Moon<br>文章链接: <a target="_blank" rel="noopener" href="https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/">https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/</a><br>本文章著作权归作者所有，任何形式的转载都请注明出处。</p>
 <h2 id="Hexo-theme-matery使用方法"><a href="#Hexo-theme-matery使用方法" class="headerlink" title="Hexo-theme-matery使用方法"></a>Hexo-theme-matery使用方法</h2><p><a target="_blank" rel="noopener" href="http://blinkfox.com/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/">使用说明</a><br><a target="_blank" rel="noopener" href="https://cmymoon.com/2024/01/17/hexo-github-da-jian-ge-ren-bo-ke/">最佳实践</a></p>
-<p><img src="/images/blog/image.png" alt="alt text"></p>
+<p><img src="/images/blog/image.png" alt="博客标题栏说明"></p>
+<blockquote>
+<p>注意:<br>1、如果 img 属性不填写的话，文章特色图会根据文章标题的 hashcode 的值取余，然后选取主题中对应的特色图片，从而达到让所有文章都的特色图各有特色。<br>2、date 的值尽量保证每篇文章是唯一的，因为本主题中 Gitalk 和 Gitment 识别 id 是通过 date 的值来作为唯一标识的。<br>3、如果要对文章设置阅读验证密码的功能，不仅要在 Front-matter 中设置采用了 SHA256 加密的 password 的值，还需要在主题的 _config.yml 中激活了配置。有些在线的 SHA256 加密的地址，可供你使用：开源中国在线工具、chahuo、站长工具。</p>
+</blockquote>
 
                 
             </div>
@@ -609,7 +612,7 @@
                 <a href="/2022/09/07/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
                     <div class="card-image">
                         
-                        <img src="/source/images/xxx.jpg" class="responsive-img" alt="感谢Hexo 和 hexo-theme-matery">
+                        <img src="/images/blog/title.jpg" class="responsive-img" alt="感谢Hexo 和 hexo-theme-matery">
                         
                         <span class="card-title">感谢Hexo 和 hexo-theme-matery</span>
                     </div>
