@@ -48,7 +48,8 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -404,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/c/" class="post-category">
-                                c++
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -426,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    989
+                    336
                 </div>
                 
 
@@ -450,7 +451,77 @@
 <blockquote>
 <p>值语义：可以进行复制或者赋值</p>
 </blockquote>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> std::endl;</span><br><span class="line"><span class="keyword">using</span> std::cout;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RAII</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//2、定义类型的构造函数和析构函数</span></span><br><span class="line">    <span class="built_in">RAII</span>(Type *p)</span><br><span class="line">    :_p(p)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;RAII(*p)&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">RAII</span>()&#123;</span><br><span class="line">        <span class="keyword">if</span>(_p)&#123;</span><br><span class="line">            <span class="keyword">delete</span> _p;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;~RAII()&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//3、运算符重载</span></span><br><span class="line">    Type * <span class="keyword">operator</span>-&gt;()&#123;</span><br><span class="line">        <span class="keyword">return</span> _p;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Type &amp; <span class="keyword">operator</span>*()&#123;</span><br><span class="line">        <span class="keyword">return</span> *_p;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Type* <span class="title">get</span><span class="params">()</span> <span class="type">const</span> </span></span><br><span class="line"><span class="function">    </span>&#123; <span class="keyword">return</span> _p; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//4、为了体现对象语义，不能复制或者赋值，即将拷贝构造和赋值运算符私有化或者删除</span></span><br><span class="line">    <span class="built_in">RAII</span>(<span class="type">const</span> RAII &amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    RAII &amp; <span class="keyword">operator</span>=(<span class="type">const</span> RAII&amp; rhs) = <span class="keyword">delete</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">//1、定义一个模板类型指针</span></span><br><span class="line">    Type * _p;    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>&#123;</span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">    <span class="built_in">Point</span>(<span class="type">int</span> x, <span class="type">int</span> y)</span><br><span class="line">    :_x(x)</span><br><span class="line">    ,_y(y)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Point(x, y)&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">Point</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;~Point()&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> _x;</span><br><span class="line">    <span class="type">int</span> _y;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">RAII&lt;Point&gt; <span class="title">raii</span><span class="params">(<span class="keyword">new</span> Point(<span class="number">3</span>, <span class="number">4</span>))</span></span>; <span class="comment">//用RAII托管类型</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-language-c"><code class="language-language-c">#include <iostream>
+
+using std::endl;
+using std::cout;
+
+template<typename Type>
+class RAII 
+&#123;
+public:
+    //2、定义类型的构造函数和析构函数
+    RAII(Type *p)
+    :_p(p)
+    &#123;
+        cout << "RAII(*p)" << endl;
+    &#125;
+    
+    ~RAII()&#123;
+        if(_p)&#123;
+            delete _p;
+        &#125;
+        cout << "~RAII()" << endl;
+    &#125;
+    
+    //3、运算符重载
+    Type * operator->()&#123;
+        return _p;
+    &#125;
+    
+    Type & operator*()&#123;
+        return *_p;
+    &#125;
+    
+    Type* get() const 
+    &#123; return _p; &#125;
+    
+    //4、为了体现对象语义，不能复制或者赋值，即将拷贝构造和赋值运算符私有化或者删除
+    RAII(const RAII &) = delete;
+    RAII & operator=(const RAII& rhs) = delete;
+    
+private:
+    //1、定义一个模板类型指针
+    Type * _p;    
+&#125;;
+
+//自定义类型
+class Point&#123;
+public: 
+    Point(int x, int y)
+    :_x(x)
+    ,_y(y)
+    &#123;
+        cout << "Point(x, y)" << endl;
+    &#125;
+    
+    ~Point()
+    &#123;
+        cout << "~Point()" << endl;
+    &#125;
+    
+private:
+    int _x;
+    int _y;
+
+&#125;;
+
+int main()
+&#123;
+    RAII<Point> raii(new Point(3, 4)); //用RAII托管类型
+    
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>运行结果</li>
 </ul>
@@ -464,16 +535,33 @@
 </li>
 </ul>
 <h3 id="2、unique-ptr"><a href="#2、unique-ptr" class="headerlink" title="2、unique_ptr"></a>2、unique_ptr</h3><p>unique_ptr禁用了拷贝构造和赋值，但是保留了移动构造函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;Point&gt; <span class="title">getValue</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function">unique_ptr&lt;Point&gt; <span class="title">up2</span><span class="params">(<span class="keyword">new</span> Point(<span class="number">12</span>, <span class="number">13</span>))</span></span>;</span><br><span class="line">  <span class="keyword">return</span> up2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unique_ptr&lt;Point&gt; up2 = <span class="built_in">getValue</span>(); <span class="comment">//此时调用的是移动语义</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将up2存储到容器中</span></span><br><span class="line">vector&lt;unique_ptr&lt;Point&gt;&gt; numbers;</span><br><span class="line">numbers.<span class="built_in">push_back</span>(up2) <span class="comment">//error 这个时候会调用拷贝构造</span></span><br><span class="line">numbers.<span class="built_in">push_back</span>(std::<span class="built_in">move</span>(up2)) <span class="comment">//ok。但此时up2为nullptr</span></span><br><span class="line"></span><br><span class="line">up<span class="number">2.</span><span class="built_in">reset</span>(<span class="keyword">new</span> <span class="built_in">Point</span>(<span class="number">13</span>, <span class="number">14</span>)) <span class="comment">//重新托管一个值</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">unique_ptr<Point> getValue()
+&#123;
+  unique_ptr<Point> up2(new Point(12, 13));
+  return up2
+&#125;
 
+unique_ptr<Point> up2 = getValue(); //此时调用的是移动语义
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">//将up2存储到容器中
+vector<unique_ptr<Point>> numbers;
+numbers.push_back(up2) //error 这个时候会调用拷贝构造
+numbers.push_back(std::move(up2)) //ok。但此时up2为nullptr
+
+up2.reset(new Point(13, 14)) //重新托管一个值
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3、share-ptr"><a href="#3、share-ptr" class="headerlink" title="3、share_ptr"></a>3、share_ptr</h3><ul>
 <li>1、针对于unique_ptr的所有属性share_ptr都适配</li>
 <li>2、share_ptr既有拷贝构造有又有赋值运算符。（都有移动语义）</li>
 <li>3、当将sp使用移动语义进行赋值之后，其本身不再托管原来的对象。</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">shared_ptr&lt;Point&gt; <span class="title">sp1</span><span class="params">(<span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">1</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">vector&lt;shared_ptr&lt;Point&gt;&gt; points;</span><br><span class="line">points.<span class="built_in">push</span>(sp); <span class="comment">//此时会调用拷贝构造函数，sp1的引用计数+1</span></span><br><span class="line">points.<span class="built_in">push</span>(std::<span class="built_in">move</span>(sp)); <span class="comment">// 此时会调用移动构造函数，sp的引用计数，sp1不再托管原来的对象</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-language-c++"><code class="language-language-c++">shared_ptr<Point> sp1(new Point(1, 1));
+
+vector<shared_ptr<Point>> points;
+points.push(sp); //此时会调用拷贝构造函数，sp1的引用计数+1
+points.push(std::move(sp)); // 此时会调用移动构造函数，sp的引用计数，sp1不再托管原来的对象
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>4、对于shared_ptr当已有use_count为1时，再进行reset操作，先将use_count减去1，如果为0则释放资源，否则不进行任何操作。</li>
 <li>5、shared_ptr的问题：循环引用<ul>
@@ -482,7 +570,8 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-language-mermaid"><code class="language-language-mermaid">
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="4、weak-ptr"><a href="#4、weak-ptr" class="headerlink" title="4、weak_ptr"></a>4、weak_ptr</h3><ul>
 <li>1、弱引用智能指针</li>
 <li>2、特点：<ul>
@@ -498,6 +587,167 @@
 </ul>
 </li>
 </ul>
+<h2 id="删除器"><a href="#删除器" class="headerlink" title="删除器"></a>删除器</h2><h3 id="1、自己理解"><a href="#1、自己理解" class="headerlink" title="1、自己理解"></a>1、自己理解</h3><p>上面的讲述中主要针对堆空间的资源管理，对于一些file资源进行释放的时候需要自定义删除器来使用<br>自己写，发现不会使用<span style="color: red"><strong>FILE文件指针</strong></span>(重点复习)</p>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">struct MyFileDeleter&#123;
+
+   void operator()(FILE* fp)&#123;
+        if(fp)&#123;
+           fclose(fp);
+           cout << "fclose()" << endl;
+        &#125;
+   &#125;
+   
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>完善RAII</li>
+</ul>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">#include <iostream>
+
+using std::endl;
+using std::cout;
+
+
+template<typename Type>
+class DefaultDeleter
+&#123;
+      void operator()(Type* tp)&#123;
+        if(tp)&#123;
+           delete tp;
+        &#125;
+   &#125;
+&#125;;
+
+template<typename Type, class Deleter = DefaultDeleter<Type>>
+class RAII 
+&#123;
+public:
+    //2、定义类型的构造函数和析构函数
+    RAII(Type *p)
+    :_p(p)
+    ,_deleter()
+    &#123;
+        cout << "RAII(*p)" << endl;
+    &#125;
+    
+    ~RAII()&#123;
+        if(_p)&#123;
+            _deleter(_p);
+            _p = nullptr;
+        &#125;
+        cout << "~RAII()" << endl;
+    &#125;
+    
+    //3、运算符重载
+    Type * operator->()&#123;
+        return _p;
+    &#125;
+    
+    Type & operator*()&#123;
+        return *_p;
+    &#125;
+    
+    Type* get() const 
+    &#123; return _p; &#125;
+    
+    //4、为了体现对象语义，不能复制或者赋值，即将拷贝构造和赋值运算符私有化或者删除
+    RAII(const RAII &) = delete;
+    RAII & operator=(const RAII& rhs) = delete;
+    
+private:
+    //1、定义一个模板类型指针
+    Type * _p;    
+    Deleter _deleter;
+&#125;;
+
+//自定义类型
+class Point&#123;
+public: 
+    Point(int x, int y)
+    :_x(x)
+    ,_y(y)
+    &#123;
+        cout << "Point(x, y)" << endl;
+    &#125;
+    
+    ~Point()
+    &#123;
+        cout << "~Point()" << endl;
+    &#125;
+    
+private:
+    int _x;
+    int _y;
+
+&#125;;
+
+int main()
+&#123;
+    RAII<Point> raii(new Point(3, 4)); //用RAII托管类型
+    
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2、讲解"><a href="#2、讲解" class="headerlink" title="2、讲解"></a>2、讲解</h3><blockquote>
+<p><code>unique_ptr</code>是在模板中定义了一个删除器，传递的是一个类型，在这个类中实现一个删除器类的实例化，进行删除</p>
+</blockquote>
+<p><img src="/images/raii/img_2.png"></p>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">unique_ptr<FILE, MyFileDeleter> up(fopen("demo.txt", "a+"));
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>在<code>shared_ptr</code>中，则是在构造函数中实现了一个构造函数，需要传递具体的对象进去</p>
+</blockquote>
+<p><img src="/images/raii/img.png" alt="模板实现"><br><img src="/images/raii/img_1.png" alt="构造函数"></p>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">shared_ptr<FILE> sp(fopen("demo.txt", "a+"), MyFileDeleter());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="智能指针的错误使用"><a href="#智能指针的错误使用" class="headerlink" title="智能指针的错误使用"></a>智能指针的错误使用</h2><p>1、将一个堆空间指针交给两个智能指针管理</p>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">Point * pt = new Point(1, 2);
+
+unique_ptr<Point> up1(pt);
+unique_ptr<Point> up2(pt); //错误
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2、将一个已经被智能指针托管的内容使用reset交给其他智能指针托管</p>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">
+shared_ptr<Point> sp1(new Point(1, 2));
+shared_ptr<Point> sp2(new Point(12, 23));
+
+sp2.reset(sp1.get()); //这行代码会引发问题。
+// sp1.get() 返回的是 sp1 所管理对象的原始指针，
+// 当调用 sp2.reset(sp1.get()) 时，sp2 会接管该原始指针，
+// 这就导致两个 shared_ptr（sp1 和 sp2）管理同一个对象，然而它们并不知道彼此的存在。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3、对象中返回一个智能指针</p>
+<blockquote>
+<p>希望在类内部获取本对象的智能指针<br>1、先继承自辅助类 enable_shared_from_this<br>2、调用成员函数shared_from_this()</p>
+</blockquote>
+<pre class="line-numbers language-language-cpp"><code class="language-language-cpp">class Point
+: public std::enable_shared_from_this<Point>
+&#123;
+public:
+  Point(int x, int y)
+  :_x(x)
+  ,_y(y)
+  &#123;
+  &#125;
+  
+  ~Point()
+  &#123;
+  
+  &#125;
+   // Point * addPoint(Point &pt) //error返回的是原生指针，无法再托管给其他智能指针
+  shared_ptr<Point> addPoint(Point &pt)&#123;
+      _x += pt._x;
+      _y += pt._y;
+      // return shared_ptr<Point>(this) //error 犯了第二种错误，this是原生指针
+      return shared_from_this()
+  &#125;
+
+private:
+    int _x;
+    int _y;
+
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -524,7 +774,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://meetmonth.github.io/2023/09/10/RAII%E5%92%8C%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">https://meetmonth.github.io/2023/09/10/RAII%E5%92%8C%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</a>
+                    <a href="https://note.meetmonth.top/2023/09/10/RAII%E5%92%8C%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">https://note.meetmonth.top/2023/09/10/RAII%E5%92%8C%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</a>
                 </span>
             </div>
             <div class="reprint__notice">
